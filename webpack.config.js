@@ -7,8 +7,9 @@ module.exports = {
     devtool: 'inline-source-map',
     module: {
         rules: [
-            { test: /\.css$/, use: 'css-loader' },
-            { test: /\.ts$/, use: 'ts-loader' },
+            {   test: /\.css$/, 
+                use: ['style-loader','css-loader'] 
+            },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
