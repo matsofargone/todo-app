@@ -13,19 +13,23 @@ ul {
 .headerTitle {
    border-bottom: 4px black solid;
    grid-area: header;
+   padding-top: 20px;
+   height: 40px;
+   
+   
 }
+
+
 
 .pageTitleDiv {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    
+    flex-direction: column;
+    margin-left: 10px;
     
 }
 
-.h3Div {
-    background-color: aqua;
-}
+
+
 
 
 
@@ -78,7 +82,8 @@ ul {
     width: 100vw;
     min-height: 100vh;
     grid-template-columns: 0.325fr 2fr;
-    grid-template-rows: 0.2fr 2fr;
+    grid-template-rows: 0.1fr 2fr;
+    
   
     
 }

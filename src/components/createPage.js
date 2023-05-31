@@ -11,8 +11,8 @@ const createPage = () => {
     const inboxListUL = document.createElement('ul');
     const projectTitle = document.createElement('p');
     const projectUL = document.createElement('ul');
-    const introTitle = document.createElement('h2');
     const pageTitleDiv = document.createElement('div');
+    
     
     
     
@@ -20,7 +20,7 @@ const createPage = () => {
     //* add detail to elements 
     titleH3.innerHTML = 'Todo App';
     projectTitle.innerHTML = 'Projects';
-    introTitle.innerHTML = 'Get **IT Done';
+   
 
     const inBoxItems = ['Inbox', 'Today', 'This Week'];
     inBoxItems.forEach((item) => {
@@ -49,7 +49,7 @@ const createPage = () => {
     sidebarDiv.classList.add('sidebar');
     mainContentDiv.classList.add('mainContent');
     projectUL.classList.add('projectItems');
-
+   
     //*Append side bar and main content to content div
     // going to use a grid to create the menu I want
     
@@ -60,8 +60,9 @@ const createPage = () => {
     // sidebar main main
     //sidebar main main 
     titleDiv.appendChild(pageTitleDiv);
-    pageTitleDiv.append(titleH3);
-    pageTitleDiv.appendChild(introTitle);
+    pageTitleDiv.appendChild(titleH3);
+    
+   
     sidebarDiv.appendChild(inboxListUL);
     sidebarDiv.appendChild(projectTitle);
     sidebarDiv.appendChild(projectUL);
