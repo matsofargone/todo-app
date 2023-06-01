@@ -1,4 +1,6 @@
 // import './style.css';
+import addButton from "./button";
+import taskForm from "./form";
 
 const createPage = () => {
     //code here for the home page 
@@ -12,8 +14,10 @@ const createPage = () => {
     const projectTitle = document.createElement('p');
     const projectUL = document.createElement('ul');
     const pageTitleDiv = document.createElement('div');
+    const todoListtDiv = document.createElement('div');
     
-    
+    //add id
+    mainContentDiv.setAttribute('id', 'main');
     
     
 
@@ -47,8 +51,10 @@ const createPage = () => {
     // introTitle.classList.add('pageTitle');
     // titleH3.classList.add('pageTitle');
     sidebarDiv.classList.add('sidebar');
+    sidebarDiv.setAttribute('id', 'sidemenu');
     mainContentDiv.classList.add('mainContent');
     projectUL.classList.add('projectItems');
+    todoListtDiv.setAttribute('id','todo-list');
    
     //*Append side bar and main content to content div
     // going to use a grid to create the menu I want
@@ -62,12 +68,17 @@ const createPage = () => {
     titleDiv.appendChild(pageTitleDiv);
     pageTitleDiv.appendChild(titleH3);
     
-   
+    addButton();
     sidebarDiv.appendChild(inboxListUL);
     sidebarDiv.appendChild(projectTitle);
     sidebarDiv.appendChild(projectUL);
+    mainContentDiv.appendChild(todoListtDiv);
     // console.log('contact');
     // console.log(content);
+
+    // taskForm();
+    // const form = document.getElementById('todoForm');
+    // form.style.display = 'none';
 
 }
 

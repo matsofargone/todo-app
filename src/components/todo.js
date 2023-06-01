@@ -1,11 +1,11 @@
 //* TODO Object
-const todo = (title, description, dueDate) => {
+const todo = (description, dueDate) => {
     
 
-    return { title:title, description:description, dueDate:dueDate }
+    return { description:description, dueDate:dueDate }
 }
 
-const todo1 = todo('Laundry','do laundry ', 'today');
+const todo1 = todo('do laundry ', 'today');
 
 
 //*Projects will act as list 
