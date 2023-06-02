@@ -8,9 +8,11 @@ const taskForm = () => {
     //create labels
     const taskLabel = document.createElement('label');
     const dateLabel = document.createElement('label');
+    const projectNameLabel = document.createElement('label');
 
     taskLabel.innerText = 'Task';
     dateLabel.innerText = 'Due Date';
+    projectNameLabel.innerText = 'Project Name';
     
     //create input
     const todoDescription = document.createElement("input");
@@ -18,12 +20,22 @@ const taskForm = () => {
     todoDescription.setAttribute("type", "text");
     todoDescription.setAttribute("name", 'description');
     todoDescription.setAttribute("placeholder", "Please enter a task");
-    todoDescription.attributes.required = "required";
+    todoDescription.setAttribute("required", "");
+    todoDescription.setAttribute('id', 'description');
+    
+    
 
     //create  due date
     const dueDate = document.createElement('input');
-    dueDate.setAttribute('type', 'text');
-    dueDate.setAttribute('placeholder', 'Due Date?');
+    dueDate.setAttribute('type', 'date');
+    dueDate.setAttribute('id', 'duedate');
+
+    //create project feild
+    const projectName = document.createElement('input');
+    projectName.setAttribute('type', 'text');
+    projectName.setAttribute('id', 'name');
+
+    
 
     //create button
 
@@ -39,11 +51,22 @@ const taskForm = () => {
     form.appendChild(todoDescription);
     form.appendChild(dateLabel);
     form.appendChild(dueDate);
+    form.appendChild(projectNameLabel);
+    form.appendChild(projectName);
     form.appendChild(submitTask);
     div.appendChild(form);
 
+    form.style.display = 'none';
+
+    
+
 
 }
+
+
+
+
+
 
 
 export default taskForm;

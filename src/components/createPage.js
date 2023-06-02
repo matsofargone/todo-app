@@ -26,20 +26,20 @@ const createPage = () => {
     projectTitle.innerHTML = 'Projects';
    
 
-    const inBoxItems = ['Inbox', 'Today', 'This Week'];
+    const inBoxItems = ['Home'];
     inBoxItems.forEach((item) => {
         let li = document.createElement('li');
         li.innerText = item;
         inboxListUL.appendChild(li);
     });
 
-    //*Handle adding projects 
-    const projectItems = ['Placeholder', 'Home', 'Gym'];
-    projectItems.forEach(item => {
-        let li = document.createElement('li');
-        li.innerHTML = item;
-        projectUL.appendChild(li);
-    });
+    // //*Handle adding projects 
+    // const projectItems = ['Test'];
+    // projectItems.forEach(item => {
+    //     let li = document.createElement('li');
+    //     li.innerHTML = item;
+    //     projectUL.appendChild(li);
+    // });
 
     
 
@@ -54,6 +54,7 @@ const createPage = () => {
     sidebarDiv.setAttribute('id', 'sidemenu');
     mainContentDiv.classList.add('mainContent');
     projectUL.classList.add('projectItems');
+    projectUL.setAttribute('id', 'projects');
     todoListtDiv.setAttribute('id','todo-list');
    
     //*Append side bar and main content to content div
@@ -68,10 +69,11 @@ const createPage = () => {
     titleDiv.appendChild(pageTitleDiv);
     pageTitleDiv.appendChild(titleH3);
     
-    addButton();
+    addButton('Task', sidebarDiv);
     sidebarDiv.appendChild(inboxListUL);
     sidebarDiv.appendChild(projectTitle);
     sidebarDiv.appendChild(projectUL);
+    addButton('Project', sidebarDiv);
     mainContentDiv.appendChild(todoListtDiv);
     // console.log('contact');
     // console.log(content);

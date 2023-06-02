@@ -1,22 +1,24 @@
 
 
-const addButton = () => {
+const addButton = (name, div) => {
     const button = document.createElement('button');
     const span = document.createElement('span');
-    const menuDiv = document.getElementById('sidemenu');
+    // const menuDiv = document.getElementById('sidemenu');
     const buttonDiv = document.createElement('div');
 
     buttonDiv.classList.add('button-box');
 
-    span.innerHTML = 'Add Task';
+    span.innerHTML = 'Add ' + name;
 
     button.classList.add('btn');
-    button.setAttribute('id', 'task-button');
+    button.setAttribute('id', name + '-button');
     button.appendChild(span);
     buttonDiv.appendChild(button);
 
-    menuDiv.appendChild(buttonDiv)
+    div.appendChild(buttonDiv)
 
 }
+
+
 
 export default addButton;

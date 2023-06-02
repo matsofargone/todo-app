@@ -1,23 +1,132 @@
 import './style.css';
-import Todo from './components/todo';
+import {todo, projects } from './components/todo';
 import createPage from './components/createPage';
-import addButton from './components/button';
 import taskForm from './components/form';
+import projectForm from './components/projectForm';
+
+
+
+//!Utility Functions 
+ const clearForm = (form) => form.reset();
+ const showForm = (form) => form.style.display = 'flex';
+ const hideForm = (form) => form.style.display = 'none';
+ const disableButton = (button) => button.setAttribute('disabled', 'disabled');
+ const enableButton = (button) => button.removeAttribute('disabled');
+
+ //* adding submissions to list
+
+
+ const addProjecttoUI = (name) => {
+    const projectItems = ['Test'];
+    const projectMenuList = document.getElementById('projects');
+    console.log(projectMenuList);
+    const li = document.createElement('li');
+    li.innerText = name;
+    projectItems.push(li);
+    projectItems.forEach(item => {
+        projectMenuList.appendChild(li);
+    });
+
+
+ }
+
+
 
 
 createPage();
-const addTask = document.getElementById('task-button');
+const addTask = document.getElementById('Task-button');
+const addProject = document.getElementById('Project-button');
+taskForm();
+projectForm();
 
 
+//!Views
+const tasks = [];
+//!Work on function ---Array returns extra blank submission after two entries 
+const displayTasks = (item) => {
+    const todoList = document.getElementById('todo-list');
+    const li = document.createElement('li');
+    // const taskName = document.getElementById('description').value;
+    
+   
+    tasks.push(item);
+    console.log(tasks);
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i] === ' ') {
+             return;
+            }
+        li.innerText = tasks[i].description 
+        todoList.appendChild(li);
+        
+        
+    }
+}
+
+const testTodo = todo('Test', '10/10/2020', 'TESTING');
+displayTasks(testTodo);
+
+
+
+//* Add Task button
 addTask.addEventListener('click', function(e) {
-    e.preventDefault();
-    taskForm();
-    addTask.setAttribute('disabled', 'disabled');
+  
+    const form = document.getElementById('todoForm');
+    showForm(form);
+    disableButton(addTask);
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const description = document.getElementById('description');
+        const dueDate = document.getElementById('duedate');
+        const projectName = document.getElementById('name');
+        const item = todo(description.value,dueDate.value, projectName.value);
+        
+        displayTasks(item);
+     
+        hideForm(form);
+        clearForm(form);
+        enableButton(addTask);
+        // select description, due date, project name
+        // display todo by appending the values to an array 
+         
+        
+        
+        
+        
+    })
+    
     
     
 });
 
+//*Add Project button
 
+addProject.addEventListener('click', function(e){
+    e.preventDefault();
+    const projectNameform = document.getElementById('projectform');
+    showForm(projectNameform);
+    disableButton(addProject);
+
+    //*Submit 
+    projectNameform.addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = document.getElementById('projectName');
+        const newProject = projects(name.value);
+        console.log(newProject);
+        addProjecttoUI(newProject.name);
+
+        clearForm(projectNameform);
+        hideForm(projectNameform);
+        enableButton(addProject);
+    })
+
+    
+
+  
+});
+
+
+//Projects can be displayed by using filters on array to match project name 
 
 
 

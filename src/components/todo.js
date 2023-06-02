@@ -1,13 +1,3 @@
-//* TODO Object
-const todo = (description, dueDate) => {
-    
-
-    return { description:description, dueDate:dueDate }
-}
-
-const todo1 = todo('do laundry ', 'today');
-
-
 //*Projects will act as list 
 const projects = (name)=> {
     const projectList = [];
@@ -25,20 +15,18 @@ const projects = (name)=> {
     return {name:name, addTask, projectList }
 }
 
-// const project1 = projects('Home');
-
-// project1.addTask(todo1);
-
-// console.log(project1.projectList);
 
 
 
 
+//* TODO Object
+const todo = (description, dueDate, project) => {
+    
 
+    return { description:description, dueDate:dueDate, project:project }
+}
 
-
-
-
+const todo1 = todo('do laundry ', 'today');
 
 
 
@@ -51,7 +39,19 @@ const projects = (name)=> {
 
 
 
-export default { todo,  projects };
+
+
+
+
+
+
+
+
+
+
+
+
+export  { todo,  projects };
 
 
 
