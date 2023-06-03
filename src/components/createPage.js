@@ -15,6 +15,9 @@ const createPage = () => {
     const projectUL = document.createElement('ul');
     const pageTitleDiv = document.createElement('div');
     const todoListtDiv = document.createElement('div');
+    // const mainHeader = document.createElement('p');
+    // const dueHeader = document.createElement('p');
+    // const headerDiv = document.createElement("div");
     
     //add id
     mainContentDiv.setAttribute('id', 'main');
@@ -24,6 +27,8 @@ const createPage = () => {
     //* add detail to elements 
     titleH3.innerHTML = 'Todo App';
     projectTitle.innerHTML = 'Projects';
+    // mainHeader.innerText = 'Task';
+    // dueHeader.innerHTML = 'Due Date';
    
 
     const inBoxItems = ['Home'];
@@ -56,7 +61,8 @@ const createPage = () => {
     projectUL.classList.add('projectItems');
     projectUL.setAttribute('id', 'projects');
     todoListtDiv.setAttribute('id','todo-list');
-   
+    // headerDiv.classList.add('headings');
+    // dueHeader.classList.add('dueheader');
     //*Append side bar and main content to content div
     // going to use a grid to create the menu I want
     
@@ -68,12 +74,14 @@ const createPage = () => {
     //sidebar main main 
     titleDiv.appendChild(pageTitleDiv);
     pageTitleDiv.appendChild(titleH3);
-    
+    // headerDiv.appendChild(mainHeader);
+    // headerDiv.appendChild(dueHeader);
     addButton('Task', sidebarDiv);
     sidebarDiv.appendChild(inboxListUL);
     sidebarDiv.appendChild(projectTitle);
     sidebarDiv.appendChild(projectUL);
     addButton('Project', sidebarDiv);
+    // mainContentDiv.appendChild(headerDiv);
     mainContentDiv.appendChild(todoListtDiv);
     // console.log('contact');
     // console.log(content);

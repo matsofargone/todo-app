@@ -35,10 +35,75 @@ ul {
 
 .mainContent {
     justify-content: center;
-    display: flex;
-    grid-area: main;
+    /* display: grid; */
+    /* grid-area: main;
     padding: 30px 200px 20px 0px;
+    grid-template-areas: "heading"
+                          "list";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr; */
+    justify-self: center;
+    width: 100%;
+    
+    
 }
+
+
+
+
+.mainContent button {
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+
+
+
+.mainContent li {
+  list-style: none;
+  border-top: 4px aliceblue solid;
+  /* border-bottom: 4px aliceblue solid; */
+  align-items: center;
+  display: block;
+  padding: 10px 0px;
+  margin-top: 10px;
+  
+  
+  
+  
+  
+}
+
+.headings {
+  display: flex;
+  flex-direction: row;
+  
+  width: 100%;
+  grid-area: heading;
+  justify-content: space-evenly;
+  border-bottom: 2px lightblue dashed;
+  height: 35px;
+  margin-left: 12px;
+}
+
+.dueheader {
+  margin-right: 125px;
+}
+#todo-list {
+  /* grid-area: list; */
+ 
+}
+
+#todo-list span {
+  margin: 10px 150px;
+ 
+}
+
+
+
+
+
+
 
 .sidebar {
     
