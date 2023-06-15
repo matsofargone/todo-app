@@ -1,10 +1,12 @@
 'use strict'
 
 const path = require('path')
+const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
+  devtool: "inline-source-map",
   entry: './src/js/main.js',
   output: {
     filename: 'main.js',
@@ -18,7 +20,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' })
   ],
-  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -46,7 +47,11 @@ module.exports = {
           {
             // Loads a SASS/SCSS file and compiles it to CSS
             loader: 'sass-loader'
-          }
+          },
+          // {
+          //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          //   type: 'asset/resource',
+          // },
         ]
       }
     ]

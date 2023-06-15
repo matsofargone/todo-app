@@ -1,3 +1,5 @@
+
+
 const displayContent = function() {
     //*Content Div
 
@@ -25,10 +27,15 @@ const displayContent = function() {
     let projectsArray = ['Gym', 'Job', 'Weekend'];
 
     //*Todo List items 
-    // const todoUl = document.createElement('ul');
+    // const picture = { image: { imagePath: "../../assets/todo_paper.jpg", imageName: "sample"}};
+    const mainDiv = document.createElement('div');
+    const todoUl = document.createElement('ul');
     // const checkbox = document.createElement('button');
-    
-    // let todoArray = [{'description': 'description 1', 'dueDate':'10/20/2023', 'project':'testing'}];
+    // const background = document.createElement('img');
+    // background.src = picture.image.imagePath;
+    // background.alt = picture.imageName;
+    let todoArray = [{'description': 'description 1', 'dueDate':'10/20/2023', 'project':'testing'}];
+   
 
     //*Set Classes
     navDiv.classList.add("container-fluid");
@@ -51,6 +58,8 @@ const displayContent = function() {
     ListofProjects.setAttribute('id', 'list-projects');
     projectButton.setAttribute('class', 'btn btn-sm btn-outline-success mt-2 me-4 rounded-circle');
     projectButton.setAttribute('id', 'button-project');
+    todoUl.setAttribute('id', 'todo-ul');
+    todoUl.setAttribute('class', 'pt-2 px-2')
     
     
     //*Editing needed elements 
@@ -67,7 +76,8 @@ const displayContent = function() {
         li. innerText = item;
         li.setAttribute('class', 'list-group-item mt-1 pt-1');
         ListofProjects.appendChild(li);
-    })
+    });
+
 
 
 
@@ -87,6 +97,8 @@ const displayContent = function() {
     aside.appendChild(LoPDiv);
     LoPDiv.appendChild(ListofProjects);
     ListofProjects.appendChild(projectButton);
+    main.appendChild(mainDiv);
+    mainDiv.appendChild(todoUl);
     
 
 }
