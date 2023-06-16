@@ -13,6 +13,8 @@ const displayForm = function(){
     const projectTitle = document.createElement('select');
     const defaultOption = document.createElement('option');
 
+    form.setAttribute('id', 'task-form');
+
     //*formatting fields
     row.setAttribute('class', 'row g-3');
     col1.setAttribute('class', 'col-sm-7');
@@ -25,11 +27,13 @@ const displayForm = function(){
     description.setAttribute('placeholder', 'task');
     description.setAttribute('aria-label', 'Description');
     description.setAttribute('required', 'required');
+    description.setAttribute('id', 'description');
     //*Due date
     dueDate.setAttribute('class','form-control');
     dueDate.setAttribute('type', 'date');
     dueDate.setAttribute('placeholder', 'date');
     dueDate.setAttribute('aria-label', 'date');
+    dueDate.setAttribute('id', 'due-date');
     //*Project Title 
     projectTitle.setAttribute('class','form-select');
     projectTitle.setAttribute('id', 'select-list');
