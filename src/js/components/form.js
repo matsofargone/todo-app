@@ -14,6 +14,7 @@ const displayForm = function(){
     const defaultOption = document.createElement('option');
 
     form.setAttribute('id', 'task-form');
+    form.setAttribute('class', 'p-2 m-2');
 
     //*formatting fields
     row.setAttribute('class', 'row g-3');

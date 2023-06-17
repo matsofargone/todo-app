@@ -4,15 +4,16 @@ import displayForm from './components/form';
 import format from 'date-fns/format';
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap';
-import displayContent from './components/displayController';
+import {displayContent, displayProjectList, displayLocalStorageTasks} from './components/displayController';
 import { todo, project } from './components/todo';
 import displayProjectForm from './components/projectForm';
 
 //Display Content
+
 displayContent();
+displayLocalStorageTasks();
 
 //!TODO Add projects to project List and have them populate in select
-//!TODO Display Todos from local storage - create displayStorage.js to handle adding elements to page 
 //!Event Listeners 
 
 //*Add task
@@ -37,7 +38,7 @@ taskButton.addEventListener('click', function(e){
         if (dueDate.value != ''){
               date = format(new Date(dueDate.value), 'MM-dd-yyyy');
         } else {
-             date = dueDate.value;
+             date = 'No due date';
         }
         //! Create todo and submit to local storage 
         const submission = todo(description.value, date , projectTitle.value);
@@ -46,7 +47,8 @@ taskButton.addEventListener('click', function(e){
         taskForm.reset();
         taskForm.innerHTML = " ";
         taskButton.removeAttribute('disabled');
-        return false;
+        location.reload();
+        
         
     })
 });
@@ -67,19 +69,23 @@ addProjectButton.addEventListener('click', function(e){
 
     projectForm.addEventListener('submit', function(e){
         e.preventDefault();
+        
         const input = document.getElementById('project-button');
+        
         let submission = project(input.value);
         //!investigate how to create two local storages
-        // let entry = localStorage.setItem(submission.name, submission.name);
-        // console.log(entry);
+        let entry = localStorage.setItem(submission.name, submission.name);
+        console.log(localStorage.getItem(submission.name));
         
         addProjectButton.removeAttribute('disabled');
         projectForm.style.display = 'none';
         projectForm.reset();
-        return false;
+        
         
 
     })
 });
+
+
 
 

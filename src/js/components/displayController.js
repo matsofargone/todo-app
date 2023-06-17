@@ -24,7 +24,7 @@ const displayContent = function() {
     const headerDiv = document.createElement('div');
     const projectButton = document.createElement('button');
 
-    let projectsArray = ['Gym', 'Job', 'Weekend'];
+    // let projectsArray = [];
 
     //*Todo List items 
     // const picture = { image: { imagePath: "../../assets/todo_paper.jpg", imageName: "sample"}};
@@ -70,13 +70,13 @@ const displayContent = function() {
     projectButton.innerHTML = `<i class="bi bi-plus-lg"></i>`;
 
 
-    //*Loop and display list 
-    projectsArray.forEach(item => {
-        const li = document.createElement('a');
-        li. innerText = item;
-        li.setAttribute('class', 'list-group-item mt-1 pt-1');
-        ListofProjects.appendChild(li);
-    });
+    // //*Loop and display list 
+    // projectsArray.forEach(item => {
+    //     const li = document.createElement('a');
+    //     li. innerText = item;
+    //     li.setAttribute('class', 'list-group-item mt-1 pt-1');
+    //     ListofProjects.appendChild(li);
+    // });
 
 
 
@@ -103,9 +103,74 @@ const displayContent = function() {
 
 }
 
+const displayProjectList = function(project) {
+    let projectsArray = [];
+    const listOfProjects = document.getElementById("list-projects");
+
+     projectsArray.push(project);
+
+     projectsArray.forEach(item => {
+        const li = document.createElement('a');
+        li. innerText = item;
+        li.setAttribute('class', 'list-group-item mt-1 pt-1');
+        ListofProjects.appendChild(li);
+    });
+
+}
+
+//!Make function to display item using horizontal list 
+
+const createTaskList = function(items){
+    const todoUL = document.getElementById('todo-ul');
+    const ul = document.createElement('ul');
+    ul.setAttribute('class', 'list-group list-group-horizontal mt-2 ms-6 ps-4');
+    if (items.length > 1) {
+        for (let i = 0; i < items.length; i++) {
+            const li = document.createElement('li');
+            const content = items[i];
+            li.setAttribute('class','list-group-item w-50 text-center ');
+            li.setAttribute('id', items[0]);
+            li.innerHTML = content;
+            ul.append(li);
+        }
+
+        const button = document.createElement('button');
+        ul.append(button);
+        button.setAttribute('class', 'btn btn-danger btn-small h-25 ms-2 rounded-circle');
+        button.innerText = 'X';
+        button.setAttribute('id', 'remove-button');
+
+        button.addEventListener('click', function(e){
+        localStorage.removeItem(items[0]);
+        setTimeout(location.reload(), 4000);
+
+        })
+
+        //!add listeners for filters 
+    }
+
+    todoUL.appendChild(ul);
+} 
+
+//!display projects
+
+
+const displayLocalStorageTasks = function() {
+    Object.keys(localStorage).forEach(function(key){
+        let item =  localStorage.getItem(key);
+          let taskArray = item.split(",");
+         
+            createTaskList(taskArray);
+        //   taskArray.forEach(function(instance){
+        //     console.log(instance);
+        //   });
+      });
+      
+}
 
 
 
 
 
-export default displayContent;
+
+export {displayContent, displayProjectList, displayLocalStorageTasks};
