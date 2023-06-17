@@ -4,7 +4,7 @@ import displayForm from './components/form';
 import format from 'date-fns/format';
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap';
-import {displayContent, displayProjectList, displayLocalStorageTasks} from './components/displayController';
+import {displayContent, displayLocalStorageTasks} from './components/displayController';
 import { todo, project } from './components/todo';
 import displayProjectForm from './components/projectForm';
 
@@ -85,7 +85,26 @@ addProjectButton.addEventListener('click', function(e){
 
     })
 });
+//Handle Home button - view all projects
+
+const homeButton = document.getElementById('home-link');
+
+homeButton.addEventListener('click', function(e) {
+    const todoUL = document.getElementById('todo-ul');
+    const projectList = document.getElementById('list-projects');
+    const projectButton = document.getElementById('button-project');
+
+
+    projectList.innerHTML = '';
+    todoUL.innerHTML = '';
+    projectList.appendChild(projectButton);
+    displayLocalStorageTasks();
+    
+    
+})
 
 
 
-
+//TODO sort todos
+//TODO reload only part of the page 
+//* TODO OPTIONAL refactor code 

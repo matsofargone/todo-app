@@ -34,7 +34,7 @@ const displayContent = function() {
     // const background = document.createElement('img');
     // background.src = picture.image.imagePath;
     // background.alt = picture.imageName;
-    let todoArray = [{'description': 'description 1', 'dueDate':'10/20/2023', 'project':'testing'}];
+   
    
 
     //*Set Classes
@@ -53,13 +53,14 @@ const displayContent = function() {
     main.setAttribute('class', 'col-10 blue mt-1 ');
     headerDiv.setAttribute('class', 'container-fluid text-center py-2 mt-5');
     Home.setAttribute('class', 'fs-4 text text-decoration-none text-black ');
+    Home.setAttribute('id','home-link');
     ProjectHeader.setAttribute('class', 'fs-2 text text-decoration-none display-6  pt-4 mt-4')
     ListofProjects.setAttribute('class', 'list-group-flush ps-3 ms-5');
     ListofProjects.setAttribute('id', 'list-projects');
     projectButton.setAttribute('class', 'btn btn-sm btn-outline-success mt-2 me-4 rounded-circle');
     projectButton.setAttribute('id', 'button-project');
     todoUl.setAttribute('id', 'todo-ul');
-    todoUl.setAttribute('class', 'pt-2 px-2')
+    todoUl.setAttribute('class', 'list-group')
     
     
     //*Editing needed elements 
@@ -103,26 +104,15 @@ const displayContent = function() {
 
 }
 
-const displayProjectList = function(project) {
-    let projectsArray = [];
-    const listOfProjects = document.getElementById("list-projects");
-
-     projectsArray.push(project);
-
-     projectsArray.forEach(item => {
-        const li = document.createElement('a');
-        li. innerText = item;
-        li.setAttribute('class', 'list-group-item mt-1 pt-1');
-        ListofProjects.appendChild(li);
-    });
-
-}
-
-//!Make function to display item using horizontal list 
+//Make function to display item using horizontal list 
 
 const createTaskList = function(items){
+    //!Handling Tasks
     const todoUL = document.getElementById('todo-ul');
     const ul = document.createElement('ul');
+    const listContainer = document.createElement('li');
+    listContainer.setAttribute('class','list-group list-group-horizontal mt-2 me-2 ps-4');
+
     ul.setAttribute('class', 'list-group list-group-horizontal mt-2 ms-6 ps-4');
     if (items.length > 1) {
         for (let i = 0; i < items.length; i++) {
@@ -131,11 +121,11 @@ const createTaskList = function(items){
             li.setAttribute('class','list-group-item w-50 text-center ');
             li.setAttribute('id', items[0]);
             li.innerHTML = content;
-            ul.append(li);
+            listContainer.append(li);
         }
 
         const button = document.createElement('button');
-        ul.append(button);
+        listContainer.append(button);
         button.setAttribute('class', 'btn btn-danger btn-small h-25 ms-2 rounded-circle');
         button.innerText = 'X';
         button.setAttribute('id', 'remove-button');
@@ -146,20 +136,43 @@ const createTaskList = function(items){
 
         })
 
-        //!add listeners for filters 
+        
     }
 
-    todoUL.appendChild(ul);
+   
+
+    todoUL.appendChild(listContainer);
 } 
 
 //!display projects
+const displayProjectList = function(items) {
+
+    if(items.length <= 1) {
+        const projectUL = document.getElementById('list-projects');
+        for (let j = 0; j < items.length; j++) {
+            const li = document.createElement('a');
+            const project = items[j];
+            li.innerHTML = project;
+            li.setAttribute('class', 'list-group-item mt-1 pt-1');
+            projectUL.appendChild(li);
+            // setTimeout(location.reload(), 4000);
+             
+            li.addEventListener('click', function(){
+                displayfilteredResults(project);
+            });
+        }
+
+    }
+
+}
 
 
 const displayLocalStorageTasks = function() {
     Object.keys(localStorage).forEach(function(key){
         let item =  localStorage.getItem(key);
           let taskArray = item.split(",");
-         
+            
+            displayProjectList(taskArray);
             createTaskList(taskArray);
         //   taskArray.forEach(function(instance){
         //     console.log(instance);
@@ -169,8 +182,36 @@ const displayLocalStorageTasks = function() {
 }
 
 
+const displayfilteredResults= function(project) {
+    const todoUL = document.getElementById('todo-ul');
+    todoUL.innerHTML = '';
+    //code here 
+    //selector to access li elements
+    Object.keys(localStorage).forEach(function(key){
+        let item =  localStorage.getItem(key);
+        let taskArray = item.split(",");
+
+          
+            // if array length > 1 and item[2] == project name -> create an array of those filtered tasks
+            if (taskArray[2] == project) {
+               
+                
+                createTaskList(taskArray);
+                
+            } 
+
+            
+        
+            
+            
+        //   taskArray.forEach(function(instance){
+        //     console.log(instance);
+        //   });
+      });
+     
+     
+}
 
 
 
-
-export {displayContent, displayProjectList, displayLocalStorageTasks};
+export {displayContent, displayLocalStorageTasks};
